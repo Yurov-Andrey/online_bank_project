@@ -2,6 +2,7 @@ from src.masks import get_mask_account, get_mask_card_number
 
 
 def mask_account_card(incoming_data: str) -> str:
+    """Функция принимает номер карты или счета и маскирует его, в зависимости от принятых данных"""
     numbers = ""
     text = ""
     final_masks_number = ""
@@ -20,6 +21,7 @@ def mask_account_card(incoming_data: str) -> str:
 
 
 def get_date(incoming_date: str) -> str:
+    """Функция принимает строковые данные содержащие текущую дату и выводит в удобном формате"""
     date_string = ""
     for i in incoming_date:
         if i.isdigit() and len(date_string) < 10:
