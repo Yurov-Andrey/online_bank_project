@@ -14,7 +14,7 @@ def mask_account_card(incoming_data: str) -> str:
 
     if len(numbers) == 16:
         final_masks_number += get_mask_card_number(numbers)
-    else:
+    elif len(numbers) == 20:
         final_masks_number += get_mask_account(numbers)
 
     return f"{text}{final_masks_number}"
@@ -32,7 +32,3 @@ def get_date(incoming_date: str) -> str:
     final_date_string = date_string[8:11] + date_string[4:8] + date_string[0:4]
 
     return final_date_string
-
-
-fact_date = "2024-03-11T02:26:18.671407"
-print(get_date(fact_date))
