@@ -8,8 +8,10 @@ def filter_by_state(incoming_list: list[dict]) -> list[dict]:
     return filtered_list
 
 
-def sort_by_date():
-    pass
+def sort_by_date(incoming_list: list[dict], sorting_order = True) -> list[dict]:
+    sort_dictionary = sorted(incoming_list, key=lambda x: x['date'], reverse = sorting_order)
+
+    return sort_dictionary
 
 
 random_dict = [{'id': 41428829, 'state': 'EXECUTED', 'date': '2019-07-03T18:35:29.512364'},
@@ -18,3 +20,4 @@ random_dict = [{'id': 41428829, 'state': 'EXECUTED', 'date': '2019-07-03T18:35:2
                {'id': 615064591, 'state': 'CANCELED', 'date': '2018-10-14T08:21:33.419441'}]
 
 print(filter_by_state(random_dict))
+print(sort_by_date(random_dict))
