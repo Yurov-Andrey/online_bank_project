@@ -31,3 +31,10 @@ def test_mask_account_card_value_error_3():
         mask_account_card('Счет 40817810')
 
     assert str(exc_info.value) == 'Не верная длина номера счета'
+
+
+def test_get_date_value_error():
+    with pytest.raises(ValueError) as exc_info:
+        get_date('')
+
+    assert str(exc_info.value) == 'Данные о дате отсутствуют'
