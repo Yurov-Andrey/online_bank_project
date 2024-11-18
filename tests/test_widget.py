@@ -3,9 +3,12 @@ import pytest
 from src.widget import mask_account_card, get_date
 
 
-def test_mask_account_card(test_fixture_correct_card_and_account):
+@pytest.mark.parametrize("card_number, correct_number", [('Счет 35383033474447895560', 'Счет **95560'),
+                                                         ('Visa Classic 6831982476737658',
+                                                          'Visa Classic 6831 98** **** 7658')])
+def test_mask_account_card(card_number, correct_number):
     assert mask_account_card(
-        test_fixture_correct_card_and_account) == 'Счет **95560', 'Visa Classic 6831 98** **** 7658'
+        card_number) == correct_number
 
 
 def test_mask_account_card_length_account(test_fixture_invalid_symbol_account):
@@ -30,7 +33,7 @@ def test_mask_account_card_missing_data(test_fixture_invalid_symbol_card_account
 
 
 def test_get_date(test_fixture_get_date_correct):
-    assert get_date(test_fixture_get_date_correct) == '11.03.2024','20.09.2024'
+    assert get_date(test_fixture_get_date_correct) == '11.03.2024', '20.09.2024'
 
 
 def test_get_date_missing_data(test_fixture_get_date_invalid_data):

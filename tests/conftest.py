@@ -27,12 +27,6 @@ def test_fixture_account_digit_error():
 
 
 @pytest.fixture
-def test_fixture_correct_card_and_account():
-    return [*'Счет 35383033474447895560',
-            'Visa Classic 6831982476737658']
-
-
-@pytest.fixture
 def test_fixture_invalid_symbol_card():
     return [*'Visa Classic 6831982458', 'Visa ', '40817500']
 
