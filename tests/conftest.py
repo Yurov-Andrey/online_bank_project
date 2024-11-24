@@ -220,54 +220,6 @@ def test_fixture_transactions_for_generators_invalid_operation_amount_key():
 
 
 @pytest.fixture
-def test_fixture_transactions_for_generators_invalid_currency_key():
-    return (
-        [
-            {
-                "id": 873106923,
-                "state": "EXECUTED",
-                "date": "2019-03-23T01:09:46.296404",
-                "operationAmount": {
-                    "amount": "43318.34",
-                    "cur": {
-                        "name": "USD",
-                        "code": "USD"
-                    }
-                },
-                "description": "Перевод со счета на счет",
-                "from": "Счет 44812258784861134719",
-                "to": "Счет 74489636417521191160"
-            },
-
-        ]
-    )
-
-
-@pytest.fixture
-def test_fixture_transactions_for_generators_invalid_name_key():
-    return (
-        [
-            {
-                "id": 873106923,
-                "state": "EXECUTED",
-                "date": "2019-03-23T01:09:46.296404",
-                "operationAmount": {
-                    "amount": "43318.34",
-                    "currency": {
-                        "n": "USD",
-                        "code": "USD"
-                    }
-                },
-                "description": "Перевод со счета на счет",
-                "from": "Счет 44812258784861134719",
-                "to": "Счет 74489636417521191160"
-            },
-
-        ]
-    )
-
-
-@pytest.fixture
 def test_fixture_transactions_for_generators_invalid_description_key():
     return (
         [
@@ -289,6 +241,7 @@ def test_fixture_transactions_for_generators_invalid_description_key():
 
         ]
     )
+
 
 @pytest.fixture
 def test_fixture_transactions_for_generators_invalid_code_currency():
@@ -313,6 +266,7 @@ def test_fixture_transactions_for_generators_invalid_code_currency():
         ]
     )
 
+
 @pytest.fixture
 def test_fixture_transactions_for_generators_invalid_data_description():
     return (
@@ -336,8 +290,71 @@ def test_fixture_transactions_for_generators_invalid_data_description():
         ]
     )
 
+
 @pytest.fixture
-def test_fixture_transactions_for_generators_correct_dict():
+def test_fixture_transactions_for_generators_invalid_name():
+    return {
+        "id": 939719570,
+        "state": "EXECUTED",
+        "date": "2018-06-30T02:08:58.425572",
+        "operationAmount": {
+            "amount": "9824.07",
+            "currency": {
+                "n": "USD",
+                "code": "USD"
+            }
+        },
+        "description": "Перевод организации",
+        "from": "Счет 75106830613657916952",
+        "to": "Счет 11776614605963066702"
+    }
+
+
+@pytest.fixture
+def test_fixture_transactions_for_generators_correct_dict_1():
+    return {
+        "id": 939719570,
+        "state": "EXECUTED",
+        "date": "2018-06-30T02:08:58.425572",
+        "operationAmount": {
+            "amount": "9824.07",
+            "currency": {
+                "name": "USD",
+                "code": "USD"
+            }
+        },
+        "description": "Перевод организации",
+        "from": "Счет 75106830613657916952",
+        "to": "Счет 11776614605963066702"
+    }
+
+
+@pytest.fixture
+def test_fixture_transactions_for_generators_incorrect_list():
+    return []
+
+
+@pytest.fixture
+def test_fixture_transactions_for_generators_incorrect_list_2():
+    return {
+        "id": 895315941,
+        "state": "EXECUTED",
+        "date": "2018-08-19T04:27:37.904916",
+        "operationAmount": {
+            "amount": "56883.54",
+            "currency": {
+                "name": "USD",
+                "code": "USD"
+            }
+        },
+        "des": "Перевод с карты на карту",
+        "from": "Visa Classic 6831982476737658",
+        "to": "Visa Platinum 8990922113665229"
+    }
+
+
+@pytest.fixture
+def test_fixture_transactions_for_generators_all_correct_dict():
     return (
         [
             {
@@ -384,6 +401,23 @@ def test_fixture_transactions_for_generators_correct_dict():
                 "description": "Перевод с карты на карту",
                 "from": "Visa Classic 6831982476737658",
                 "to": "Visa Platinum 8990922113665229"
-            },
+            }
+
         ]
     )
+
+
+@pytest.fixture
+def test_fixture_transactions_for_generators_correct_description():
+    return [
+        "Перевод организации",
+        "Перевод со счета на счет",
+        "Перевод со счета на счет",
+        "Перевод с карты на карту",
+        "Перевод организации"]
+
+
+@pytest.fixture
+def test_fixture_card_number_generator_correct_data():
+    return [
+    '0000 0000 0000 0001', '0000 0000 0000 0002', '0000 0000 0000 0003', '0000 0000 0000 0004', '0000 0000 0000 0005']
