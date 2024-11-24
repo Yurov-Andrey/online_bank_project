@@ -1,8 +1,8 @@
-from typing import Generator, Iterator
+# from typing import Generator, Iterator
 
 
 # def filter_by_currency(incoming_list: list[dict], currency_type: str) -> Iterator[dict]:
-def filter_by_currency(incoming_list: list[dict], currency_type: str):
+def filter_by_currency(incoming_list: list, currency_type: str):
     """Функция, которая принимает на вход список словарей, представляющих транзакции.
     Функция должна возвращать итератор, который поочередно выдает транзакции,
     где валюта операции соответствует заданной (например, USD)."""
@@ -23,21 +23,21 @@ def filter_by_currency(incoming_list: list[dict], currency_type: str):
 
 
 # def transaction_descriptions(incoming_list: list[dict]) -> Generator[dict]:
-def transaction_descriptions(incoming_list: list[dict]):
+def transaction_descriptions(incoming_list: list):
     """Функция принимает список словарей с транзакциями и возвращает описание каждой операции по очереди"""
 
     if not isinstance(incoming_list, list) or len(incoming_list) == 0:
         raise ValueError("Не найдено значение 'description' или список транзакций отсутствует")
 
     for transaction in incoming_list:
-        if "description" not in transaction or transaction["description"] == '':
+        if "description" not in transaction or transaction["description"] == "":
             raise ValueError("Не найдено значение 'description'")
 
         yield transaction["description"]
 
 
 # def card_number_generator(start: int = 1, end: int = 20) -> Generator[str]:
-def card_number_generator(start: int = 1, end: int = 20):
+def card_number_generator(start: int=1, end: int=20):
     """Функция генерирует номера карт в заданном диапазоне и выдаёт в корректном формате"""
 
     if not isinstance(start, int) or not isinstance(end, int):
