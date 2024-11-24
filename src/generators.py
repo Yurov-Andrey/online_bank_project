@@ -34,8 +34,8 @@ def transaction_descriptions(incoming_list: list[dict]) -> Generator[list[dict]]
         raise ValueError("Не верный тип данных входящих аргументов")
 
     for transactions in incoming_list:
-        if transactions["description"] not in transactions:
-            raise ValueError("Не найдено значение 'description'")
+        if transactions["description"] not in transactions or transactions["description"] == "":
+            raise ValueError("Не найдено значение 'description' или список транзакций отсутствует")
 
     for transactions in incoming_list:
         yield transactions["description"]
