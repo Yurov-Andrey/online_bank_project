@@ -1,10 +1,10 @@
-from typing import Iterator, Generator
+from typing import Generator, Iterator
 
 
-def filter_by_currency(incoming_list: list[dict], currency_type: str="USD") -> Iterator[dict]:
+def filter_by_currency(incoming_list: list[dict], currency_type: str = "USD") -> Iterator[dict]:
     """Функция, которая принимает на вход список словарей, представляющих транзакции.
-Функция должна возвращать итератор, который поочередно выдает транзакции,
-где валюта операции соответствует заданной (например, USD)."""
+    Функция должна возвращать итератор, который поочередно выдает транзакции,
+    где валюта операции соответствует заданной (например, USD)."""
 
     if not isinstance(incoming_list, list):
         raise ValueError("Не верный тип данных входящих аргументов")
@@ -41,7 +41,7 @@ def transaction_descriptions(incoming_list: list[dict]) -> Generator[list[dict]]
         yield transactions["description"]
 
 
-def card_number_generator(start: int=1, end: int=20) -> str:
+def card_number_generator(start: int = 1, end: int = 20) -> Generator[str]:
     """Функция генерирует номера карт в заданном диапазоне и выдаёт в корректном формате"""
 
     if not isinstance(start, int) or not isinstance(end, int):
@@ -52,7 +52,8 @@ def card_number_generator(start: int=1, end: int=20) -> str:
 
     if len(str(end)) > 16:
         raise ValueError(
-            "Слишком большое число передано в end, максимальная длина строки не должна превышать 16 символов")
+            "Слишком большое число передано в end, максимальная длина строки не должна превышать 16 символов"
+        )
 
     while start <= end:
         formatted_number = f"{start:016}"
