@@ -82,3 +82,14 @@ def test_number_generator_invalid_len_arg():
         list(card_number_generator(1, 99999999999999999))
         assert str(
             exc_info.value) == "Слишком большое число передано в start/end, максимальная длина строки не должна превышать 16 символов"
+
+
+@pytest.mark.parametrize("start, stop", [(1, 5), (1, 5), (1, 5), (1, 5),
+                                         (1, 5), ])
+def test_number_generator_correct_param(start, stop):
+    generator = card_number_generator(start, stop)
+    assert next(generator) == '0000 0000 0000 0001'
+    assert next(generator) == '0000 0000 0000 0002'
+    assert next(generator) == '0000 0000 0000 0003'
+    assert next(generator) == '0000 0000 0000 0004'
+    assert next(generator) == '0000 0000 0000 0005'
