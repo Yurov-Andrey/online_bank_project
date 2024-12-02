@@ -1,65 +1,64 @@
-import shutil
+import os
 from functools import wraps
-from time import time
+import time
 
 
 def log(filename=None):
+    """ Декоратор, который автоматически логирует начало и конец выполнения функции,
+    а также ее результаты или возникшие ошибки. Декоратор может логировать работу функции и ее результат как в файл,
+     так и в консоль """
+
     def wrapper(function):
         @wraps(function)
         def inner(*args, **kwargs):
             time_start = 0
             time_end = 0
-            time_completed = time_end - time_start
+
             if filename is None:
                 try:
-                    time_start += time()
+                    time_start += time.time()
                     func_result = function(*args, **kwargs)
-                    time_end += time()
+                    time_end += time.time()
 
                 except Exception as e:
-                    print(f'Function {function.__name__} started {time_start}')
                     print(f'{function.__name__} error: {e}. Inputs: {args}, {kwargs}')
 
+                    return 'ValueError'
+
                 else:
-                    print(f'{function.__name__} ok')
-                    print(f'Function {function.__name__} started {time_start}')
-                    print(f'Function {function.__name__} started {time_end}')
-                    print(f'Time to complete the function {function.__name__} - {time_completed}')
-                    return func_result
+                    time_completed = round(time_end - time_start, 5)
+                    print(
+                        f'{function.__name__} ok\nFunction {function.__name__} started {time_start}\nFunction {function.__name__} started {time_end}\nTime to complete the function: {function.__name__} - {time_completed}')
+
+                return func_result
 
             elif filename is not None:
+                log_dir = "logs"
+                os.makedirs(log_dir, exist_ok=True)
+                log_path = os.path.join(log_dir, filename)
+
                 try:
-                    time_start += time()
+                    time_start += time.time()
                     func_result = function(*args, **kwargs)
-                    time_end += time()
+                    time_end += time.time()
 
                 except Exception as e:
-                    logs_direct = './logs'
-                    logs_direct_final = logs_direct + filename
-                    with open(logs_direct_final, "a", encoding='utf-8') as file:
-                        file.write(f'Function {function.__name__} started {time_start}\n')
+                    with open(log_path, "a", encoding='utf-8') as file:
                         file.write(f'{function.__name__} error: {e}. Inputs: {args}, {kwargs}\n')
-                        # final_direct = './logs'
-                        # shutil.move(filename, final_direct)
+
+                    return 'ValueError'
 
                 else:
-                    with open(filename, "a", encoding='utf-8') as file:
+                    time_completed = round(time_end - time_start, 5)
+                    with open(log_path, "a", encoding='utf-8') as file:
                         file.write(f'{function.__name__} ok \n')
                         file.write(f'Function {function.__name__} started {time_start}\n')
                         file.write(f'Function {function.__name__} started {time_end}\n')
-                        file.write(f'Time to complete the function {function.__name__} - {time_completed}\n')
-                        # final_direct = './logs'
-                        # shutil.move(filename, final_direct)
-                    return func_result
+                        file.write(f'Time to complete the function: {function.__name__} - {time_completed}\n')
+
+                return func_result
+
 
         return inner
 
     return wrapper
-
-
-@log(filename="mylog.txt")
-def my_function(x, y):
-    return x + y
-
-
-my_function(1, '2')
