@@ -23,10 +23,10 @@ def test_transactions_for_generators_invalid_operation_amount_key(
         assert str(exc_info.value) == "Не найдено значение 'operationAmount'"
 
 
-def test_transactions_for_generators_invalid_name(test_fixture_transactions_for_generators_invalid_name):
+def test_transactions_for_generators_invalid_name(test_fixture_transactions_for_generators_invalid_code):
     with pytest.raises(ValueError) as exc_info:
-        list(filter_by_currency(test_fixture_transactions_for_generators_invalid_name, "USD"))
-        assert str(exc_info.value) == "Не найдено значение 'name'"
+        list(filter_by_currency(test_fixture_transactions_for_generators_invalid_code, "USD"))
+        assert str(exc_info.value) == "Не найдено значение 'code'"
 
 
 def test_transaction_descriptions(test_fixture_transactions_for_generators_all_dict,
@@ -51,13 +51,13 @@ def test_transactions_for_generators_invalid_data_description(
         test_fixture_transactions_for_generators_invalid_data_description):
     with pytest.raises(ValueError) as exc_info:
         list(transaction_descriptions(test_fixture_transactions_for_generators_invalid_data_description))
-        assert str(exc_info.value) == "Не найдено значение 'description' или список транзакций отсутствует"
+        assert str(exc_info.value) == "Не верный тип данных или список транзакций отсутствует"
 
 
 def test_transactions_for_generators_incorrect_list_2(test_fixture_transactions_for_generators_incorrect_list_2):
     with pytest.raises(ValueError) as exc_info:
         list(transaction_descriptions(test_fixture_transactions_for_generators_incorrect_list_2))
-        assert str(exc_info.value) == "Не найдено значение 'description' или список транзакций отсутствует"
+        assert str(exc_info.value) == "Не верный тип данных или список транзакций отсутствует"
 
 
 def test_card_number_generator_correct_data(test_fixture_card_number_generator_correct_data):
