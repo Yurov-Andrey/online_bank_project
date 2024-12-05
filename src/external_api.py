@@ -31,7 +31,7 @@ float. Если транзакция была в USD или EUR, происхо�
         raise ValueError("Валюта транзакции не найдена")
 
     elif incoming_transaction["operationAmount"]["currency"]["code"] == "RUB":
-        amount = incoming_transaction["operationAmount"]["amount"]
+        amount = float(incoming_transaction["operationAmount"]["amount"])
         return amount
 
     elif incoming_transaction["operationAmount"]["currency"]["code"] != "RUB":
