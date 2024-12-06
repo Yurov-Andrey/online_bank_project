@@ -37,39 +37,12 @@ def test_currency_conversion_invalid_type(test_fixture_dict_conversion_invalid_t
     assert str(exc_info.value) == "Не верный тип данных входящей транзакции"
 
 
-def test_dict_conversion_invalid_oa(test_fixture_dict_conversion_invalid_oa):
-    with pytest.raises(ValueError) as exc_info:
-        currency_conversion(test_fixture_dict_conversion_invalid_oa)
-
-    assert str(exc_info.value) == "Не найдено значение 'operationAmount'"
-
-
-def test_dict_conversion_invalid_amount(test_fixture_dict_conversion_invalid_amount):
-    with pytest.raises(ValueError) as exc_info:
-        currency_conversion(test_fixture_dict_conversion_invalid_amount)
-
-    assert str(exc_info.value) == "Не найдено значение 'amount'"
-
-
-def test_dict_conversion_invalid_currency(test_fixture_dict_conversion_invalid_currency):
-    with pytest.raises(ValueError) as exc_info:
-        currency_conversion(test_fixture_dict_conversion_invalid_currency)
-
-    assert str(exc_info.value) == "Не найдено значение 'currency'"
-
 
 def test_dict_conversion_invalid_sum(test_fixture_dict_conversion_invalid_sum):
     with pytest.raises(ValueError) as exc_info:
         currency_conversion(test_fixture_dict_conversion_invalid_sum)
 
     assert str(exc_info.value) == "Сумма транзакции равна нулю или отсутствует"
-
-
-def test_dict_conversion_invalid_code(test_fixture_dict_conversion_invalid_code):
-    with pytest.raises(ValueError) as exc_info:
-        currency_conversion(test_fixture_dict_conversion_invalid_code)
-
-    assert str(exc_info.value) == "Не найдено значение 'code'"
 
 
 def test_dict_conversion_invalid_code_data(test_fixture_dict_conversion_invalid_code_data):

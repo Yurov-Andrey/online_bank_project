@@ -3,15 +3,16 @@ from typing import Any
 
 
 def processing_json_dict(file_path: Any) -> list | str:
-    """ Функция, которая принимает на вход путь до JSON-файла и возвращает список словарей с данными о финансовых транзакциях.
-    Если файл пустой, содержит не список или не найден, функция возвращает пустой список. """
+    """Функция, которая принимает на вход путь до JSON-файла и возвращает список словарей
+    с данными о финансовых транзакциях. Если файл пустой, содержит не список или не найден,
+    функция возвращает пустой список."""
 
     try:
-        with (open(file_path, 'r', encoding='utf-8') as file):
+        with open(file_path, "r", encoding="utf-8") as file:
             contents = json.load(file)
 
             if not isinstance(contents, list):
-                empty_list = []
+                empty_list: list = []
                 return empty_list
 
             elif len(contents) == 0:
