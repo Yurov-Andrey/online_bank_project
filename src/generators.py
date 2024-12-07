@@ -37,7 +37,7 @@ def transaction_descriptions(incoming_list: list):
 
 
 # def card_number_generator(start: int = 1, end: int = 20) -> Generator[str]:
-def card_number_generator(start: int=1, end: int=20):
+def card_number_generator(start: int = 1, end: int = 20):
     """Функция генерирует номера карт в заданном диапазоне и выдаёт в корректном формате"""
 
     if not isinstance(start, int) or not isinstance(end, int):
