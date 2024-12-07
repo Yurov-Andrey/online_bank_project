@@ -14,8 +14,8 @@ def currency_conversion(incoming_transaction: dict) -> float:
         raise ValueError("Не верный тип данных входящей транзакции")
 
     elif (
-        incoming_transaction["operationAmount"]["amount"] == "0"
-        or incoming_transaction["operationAmount"]["amount"] == ""
+            incoming_transaction["operationAmount"]["amount"] == "0"
+            or incoming_transaction["operationAmount"]["amount"] == ""
     ):
         raise ValueError("Сумма транзакции равна нулю или отсутствует")
 
@@ -38,7 +38,6 @@ def currency_conversion(incoming_transaction: dict) -> float:
         payload: dict[str, Any] = {}
         headers = {"apikey": api}
         response = requests.request("GET", url, headers=headers, data=payload)
-        status_code = response.status_code
 
         result = response.json()
         final_sum = round(float(result["result"]), 2)
