@@ -14,11 +14,11 @@ def filter_by_currency(incoming_list: list, currency_type: str):
         elif "currency" not in transaction["operationAmount"]:
             raise ValueError("Не найдено значение 'currency'")
 
-        elif "name" not in transaction["operationAmount"]["currency"]:
-            raise ValueError("Не найдено значение 'name'")
+        elif "code" not in transaction["operationAmount"]["currency"]:
+            raise ValueError("Не найдено значение 'code'")
 
     for transaction in incoming_list:
-        if transaction["operationAmount"]["currency"]["name"] == currency_type:
+        if transaction["operationAmount"]["currency"]["code"] == currency_type:
             yield transaction
 
 
@@ -27,7 +27,7 @@ def transaction_descriptions(incoming_list: list):
     """Функция принимает список словарей с транзакциями и возвращает описание каждой операции по очереди"""
 
     if not isinstance(incoming_list, list) or len(incoming_list) == 0:
-        raise ValueError("Не найдено значение 'description' или список транзакций отсутствует")
+        raise ValueError("Не верный тип данных или список транзакций отсутствует")
 
     for transaction in incoming_list:
         if "description" not in transaction or transaction["description"] == "":

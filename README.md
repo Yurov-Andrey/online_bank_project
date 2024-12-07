@@ -31,6 +31,10 @@ poetry install
 - [masks.py](src/masks.py)
 - [widget.py](src/widget.py)
 - [processing.py](src/processing.py)
+- [utils.py](src/utils.py)
+- [generators.py](src/generators.py)
+- [decorators.py](src/decorators.py)
+- [external_api](src/external_api.py)
 
 ---
 
@@ -113,7 +117,7 @@ poetry install
 
   `[{'id': 41428829, 'state': 'EXECUTED', 'date': '2019-07-03T18:35:29.512364'}, {'id': 939719570, 'state': 'EXECUTED', 'date': '2018-06-30T02:08:58.425572'}, {'id': 594226727, 'state': 'CANCELED', 'date': '2018-09-12T21:27:25.241689'}, {'id': 615064591, 'state': 'CANCELED', 'date': '2018-10-14T08:21:33.419441'}]`
 
-3. **processing.py**
+4. **generators.py**
 
 - def filter_by_currency() - *Функция, которая принимает на вход список словарей, представляющих транзакции.
   Функция должна возвращать итератор, который поочередно выдает транзакции,
@@ -173,19 +177,88 @@ poetry install
     4276 4827 7896 2108
     4276 4827 7896 2109
 
-4. **decorators.py:**
+5. **decorators.py:**
 
 - `def log()` - *Декоратор, который автоматически логирует начало и конец выполнения функции,
-    а также ее результаты или возникшие ошибки. Декоратор может логировать работу функции и ее результат как в файл,
-     так и в консоль*
+  а также ее результаты или возникшие ошибки. Декоратор может логировать работу функции и ее результат как в файл,
+  так и в консоль*
 
-  `# Пример вывода`
+ #####  Пример вывода
 
-  `# "my_function_for_test ok"`
+   ```"my_function_for_test ok"```
 
-  `# "Time to complete the function:"`
+  ```"Time to complete the function:"```
 
-  `# "my_function_for_test error: unsupported operand type(s) for +: 'int' and 'str'. Inputs: (1, '2'), {}"`
+  ```"my_function_for_test error: unsupported operand type(s) for +: 'int' and 'str'. Inputs: (1, '2'), {}"```
+
+6. **external_api.py:**
+
+- `currency_conversion()` *Функция, которая принимает на вход транзакцию и возвращает сумму транзакции (amount) в
+  рублях, тип данных —
+  float. Если транзакция была в USD или EUR, происходит обращение к внешнему API для получения текущего курса валют
+  и конвертации суммы операции в рубли.*
+
+#### Пример полученный данных о конвертации валюты:
+
+   ```{
+        "date": "2024-12-05",
+        "info": {
+            "rate": 105.00057,
+            "timestamp": 1733380935
+        },
+        "query": {
+            "amount": 8221.37,
+            "from": "USD",
+            "to": "RUB"
+        },
+        "result": 863248.536181,
+        "success": True
+     }```
+
+```
+Пример вывода результата функции:
+ `8221.37`
+ 
+7. **utils.py:**
+
+- `processing_json_dict()` *Функция, которая принимает на вход путь до JSON-файла и возвращает список словарей с данными о финансовых транзакциях.
+    Если файл пустой, содержит не список или не найден, функция возвращает пустой список.*
+
+Пример вывода результата функции:
+```
+[
+  {
+    "id": 441945886,
+    "state": "EXECUTED",
+    "date": "2019-08-26T10:50:58.294041",
+    "operationAmount": {
+      "amount": "31957.58",
+      "currency": {
+        "name": "руб.",
+        "code": "RUB"
+      }
+    },
+    "description": "Перевод организации",
+    "from": "Maestro 1596837868705199",
+    "to": "Счет 64686473678894779589"
+  },
+  {
+    "id": 41428829,
+    "state": "EXECUTED",
+    "date": "2019-07-03T18:35:29.512364",
+    "operationAmount": {
+      "amount": "8221.37",
+      "currency": {
+        "name": "USD",
+        "code": "USD"
+      }
+    },
+    "description": "Перевод организации",
+    "from": "MasterCard 7158300734726758",
+    "to": "Счет 35383033474447895560"
+  }]
+```
+
 ---
 
 ## Тестирование:

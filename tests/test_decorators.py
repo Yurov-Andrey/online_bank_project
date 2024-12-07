@@ -26,7 +26,7 @@ def test_log_er(capsys):
     )
 
 def test_log_func():
-    @log("logs\logs.txt")
+    @log("logs.txt")
     def my_function_for_test(a, b):
         return a + b
 
