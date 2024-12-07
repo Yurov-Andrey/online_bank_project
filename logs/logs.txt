@@ -1,0 +1,30 @@
+my_function_for_test ok 
+Function my_function_for_test started 1733383977.5859883
+Function my_function_for_test started 1733383977.5859919
+Time to complete the function: my_function_for_test - 0.0
+my_function_for_test error: can only concatenate str (not "int") to str. Inputs: ('a', 2), {}
+my_function_for_test ok 
+Function my_function_for_test started 1733471694.1307065
+Function my_function_for_test started 1733471694.1307073
+Time to complete the function: my_function_for_test - 0.0
+my_function_for_test error: can only concatenate str (not "int") to str. Inputs: ('a', 2), {}
+my_function_for_test ok 
+Function my_function_for_test started 1733471843.4540734
+Function my_function_for_test started 1733471843.4540741
+Time to complete the function: my_function_for_test - 0.0
+my_function_for_test error: can only concatenate str (not "int") to str. Inputs: ('a', 2), {}
+my_function_for_test ok 
+Function my_function_for_test started 1733471886.0116215
+Function my_function_for_test started 1733471886.0116222
+Time to complete the function: my_function_for_test - 0.0
+my_function_for_test error: can only concatenate str (not "int") to str. Inputs: ('a', 2), {}
+my_function_for_test ok 
+Function my_function_for_test started 1733471967.422758
+Function my_function_for_test started 1733471967.422759
+Time to complete the function: my_function_for_test - 0.0
+my_function_for_test error: can only concatenate str (not "int") to str. Inputs: ('a', 2), {}
+my_function_for_test ok 
+Function my_function_for_test started 1733472062.7073653
+Function my_function_for_test started 1733472062.7073665
+Time to complete the function: my_function_for_test - 0.0
+my_function_for_test error: can only concatenate str (not "int") to str. Inputs: ('a', 2), {}
