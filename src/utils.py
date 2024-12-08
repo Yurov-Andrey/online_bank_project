@@ -25,7 +25,7 @@ def processing_json_dict(file_path: Any) -> list | str:
             contents = json.load(file)
             logger.info(f"Открыт и прочитан файл {file}")
 
-            logger.debug(f"Проверка типа данных содержимого файла.")
+            logger.debug("Проверка типа данных содержимого файла.")
             if not isinstance(contents, list):
                 empty_list: list = []
                 logger.warning(

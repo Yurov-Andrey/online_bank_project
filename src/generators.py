@@ -53,6 +53,6 @@ def card_number_generator(start: int = 1, end: int = 20):
 
     while start <= end:
         formatted_number = f"{start:016}"
-        formatted_number = " ".join([formatted_number[i:i + 4] for i in range(0, len(formatted_number), 4)])
+        formatted_number = " ".join([formatted_number[i : i + 4] for i in range(0, len(formatted_number), 4)])
         yield formatted_number
         start += 1
