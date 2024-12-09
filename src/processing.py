@@ -1,4 +1,4 @@
-def filter_by_state(incoming_list: list[dict], state: str="EXECUTED") -> list[dict]:
+def filter_by_state(incoming_list: list[dict], state: str = "EXECUTED") -> list[dict]:
     """Функция возвращает новый список словарей, содержащий только те словари, у которых ключ
     state соответствует указанному значению"""
     filtered_list = []
@@ -10,7 +10,7 @@ def filter_by_state(incoming_list: list[dict], state: str="EXECUTED") -> list[di
     return filtered_list
 
 
-def sort_by_date(incoming_list: list[dict], sorting_order: bool=True) -> list[dict]:
+def sort_by_date(incoming_list: list[dict], sorting_order: bool = True) -> list[dict]:
     """Функция должна возвращать новый список, отсортированный по дате (date)"""
     sort_dictionary = sorted(incoming_list, key=lambda x: x["date"], reverse=sorting_order)
 
