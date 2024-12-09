@@ -4,9 +4,9 @@ import time
 
 
 def log(filename=None):
-    """ Декоратор, который автоматически логирует начало и конец выполнения функции,
+    """Декоратор, который автоматически логирует начало и конец выполнения функции,
     а также ее результаты или возникшие ошибки. Декоратор может логировать работу функции и ее результат как в файл,
-     так и в консоль """
+     так и в консоль"""
 
     def wrapper(function):
         @wraps(function)
@@ -21,14 +21,17 @@ def log(filename=None):
                     time_end += time.time()
 
                 except Exception as e:
-                    print(f'{function.__name__} error: {e}. Inputs: {args}, {kwargs}')
+                    print(f"{function.__name__} error: {e}. Inputs: {args}, {kwargs}")
 
-                    return 'ValueError'
+                    return "ValueError"
 
                 else:
                     time_completed = round(time_end - time_start, 5)
                     print(
-                        f'{function.__name__} ok\nFunction {function.__name__} started {time_start}\nFunction {function.__name__} started {time_end}\nTime to complete the function: {function.__name__} - {time_completed}')
+                        f"{function.__name__} ok\nFunction {function.__name__} started {time_start}\n"
+                        f"Function {function.__name__} started {time_end}\n"
+                        f"Time to complete the function: {function.__name__} - {time_completed}"
+                    )
 
                 return func_result
 
@@ -43,21 +46,20 @@ def log(filename=None):
                     time_end += time.time()
 
                 except Exception as e:
-                    with open(log_path, "a", encoding='utf-8') as file:
-                        file.write(f'{function.__name__} error: {e}. Inputs: {args}, {kwargs}\n')
+                    with open(log_path, "a", encoding="utf-8") as file:
+                        file.write(f"{function.__name__} error: {e}. Inputs: {args}, {kwargs}\n")
 
-                    return 'ValueError'
+                    return "ValueError"
 
                 else:
                     time_completed = round(time_end - time_start, 5)
-                    with open(log_path, "a", encoding='utf-8') as file:
-                        file.write(f'{function.__name__} ok \n')
-                        file.write(f'Function {function.__name__} started {time_start}\n')
-                        file.write(f'Function {function.__name__} started {time_end}\n')
-                        file.write(f'Time to complete the function: {function.__name__} - {time_completed}\n')
+                    with open(log_path, "a", encoding="utf-8") as file:
+                        file.write(f"{function.__name__} ok \n")
+                        file.write(f"Function {function.__name__} started {time_start}\n")
+                        file.write(f"Function {function.__name__} started {time_end}\n")
+                        file.write(f"Time to complete the function: {function.__name__} - {time_completed}\n")
 
                 return func_result
-
 
         return inner
 

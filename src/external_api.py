@@ -38,7 +38,6 @@ def currency_conversion(incoming_transaction: dict) -> float:
         payload: dict[str, Any] = {}
         headers = {"apikey": api}
         response = requests.request("GET", url, headers=headers, data=payload)
-        status_code = response.status_code
 
         result = response.json()
         final_sum = round(float(result["result"]), 2)
