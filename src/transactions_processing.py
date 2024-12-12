@@ -1,13 +1,14 @@
 import csv
 import logging
 import os
-import pandas as pd
 from typing import Any
 
-log_dir = "logs"
+import pandas as pd
+
+log_dir = "../logs"
 os.makedirs(log_dir, exist_ok=True)
 
-logger = logging.getLogger("transaction_processing_logger")
+logger = logging.getLogger(__name__)
 logger.setLevel(logging.INFO)
 file_handler = logging.FileHandler(f"{log_dir}/transaction_processing.log", mode="w")
 file_formatter = logging.Formatter("%(asctime)s - %(name)s - %(levelname)s - %(funcName)s - %(lineno)d: %(message)s")
@@ -16,15 +17,15 @@ logger.addHandler(file_handler)
 
 
 def processing_csv(file_path: Any) -> list[dict] | str:
-    """ Функция для считывания финансовых операций из CSV принимает путь к файлу CSV в качестве аргумента и
-     считывает финансовые операции из CSV, после чего выдает список словарей с транзакциями. """
+    """Функция для считывания финансовых операций из CSV принимает путь к файлу CSV в качестве аргумента и
+    считывает финансовые операции из CSV, после чего выдает список словарей с транзакциями."""
     logger.info(f"Старт работы функции {processing_csv}, принят файл по пути {file_path}")
     try:
 
-        if os.path.splitext(file_path)[1].lower() == '.csv':
+        if os.path.splitext(file_path)[1].lower() == ".csv":
             with open(file_path) as file:
                 logger.info(f"Открыт и прочитан файл {file}")
-                reader = csv.DictReader(file, delimiter=';')
+                reader = csv.DictReader(file, delimiter=";")
                 result = list(reader)
 
             logger.debug("Проверка типа данных содержимого файла.")
@@ -55,14 +56,5 @@ def processing_csv(file_path: Any) -> list[dict] | str:
     return result
 
 
-
-
-
-
-
-
-
-
-
-my_path_csv = '../data/transactions.csv'
-print(processing_csv(my_path_csv))
+# my_path_csv = '../data/transactions.csv'
+# print(processing_csv(my_path_csv))
