@@ -28,22 +28,6 @@ def processing_csv(file_path: Any) -> list[dict] | str:
                 reader = csv.DictReader(file, delimiter=";")
                 result = list(reader)
 
-            logger.debug("Проверка типа данных содержимого файла.")
-            for x in result:
-                if not isinstance(x, dict):
-                    empty_list: list = []
-                    logger.warning(
-                        f"Проверка не пройдена, содержимое не является списком. Создан пустой список {empty_list}"
-                    )
-                    return empty_list
-
-                elif len(result) == 0:
-                    empty_list = []
-                    logger.warning(
-                        f"Проверка не пройдена, содержимое является пустым списком. Создан пустой список {empty_list}"
-                    )
-                    return empty_list
-
     except FileNotFoundError:
         logger.error(f"Запрашиваемый файл не найден или указан некорректный путь ({file_path}) к файлу")
         return f"Запрашиваемый файл не найден или указан некорректный путь ({file_path}) к файлу"
@@ -55,6 +39,9 @@ def processing_csv(file_path: Any) -> list[dict] | str:
     logger.info(f"Функция {processing_csv} завершила работу и вернула результат.")
     return result
 
+
+def processing_excel():
+    pass
 
 # my_path_csv = '../data/transactions.csv'
 # print(processing_csv(my_path_csv))
