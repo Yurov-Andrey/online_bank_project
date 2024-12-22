@@ -1,12 +1,11 @@
 import logging
 import os
+from src.settings import REPORTS_PATH
 
-log_dir = "logs"
-os.makedirs(log_dir, exist_ok=True)
 
 logger = logging.getLogger(__name__)
 logger.setLevel(logging.INFO)
-file_handler = logging.FileHandler(f"{log_dir}/masks.log", mode="w")
+file_handler = logging.FileHandler(f"{REPORTS_PATH}/masks.log", mode="w")
 file_formatter = logging.Formatter("%(asctime)s - %(name)s - %(levelname)s - %(funcName)s - %(lineno)d: %(message)s")
 file_handler.setFormatter(file_formatter)
 logger.addHandler(file_handler)

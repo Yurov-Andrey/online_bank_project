@@ -1,0 +1,10 @@
+my_function_for_test ok 
+Function my_function_for_test started 1734887785.717694
+Function my_function_for_test started 1734887785.7176948
+Time to complete the function: my_function_for_test - 0.0
+my_function_for_test error: can only concatenate str (not "int") to str. Inputs: ('a', 2), {}
+my_function_for_test ok 
+Function my_function_for_test started 1734899584.2052848
+Function my_function_for_test started 1734899584.2052855
+Time to complete the function: my_function_for_test - 0.0
+my_function_for_test error: can only concatenate str (not "int") to str. Inputs: ('a', 2), {}
