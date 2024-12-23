@@ -1,5 +1,5 @@
 from src.processing import filter_by_state, sort_by_date
-from tests.conftest import test_fixture_sort_by_date_correct, test_fixture_sort_by_date
+from tests.conftest import test_fixture_sort_by_date, test_fixture_sort_by_date_correct
 
 
 def test_filter_by_state(test_fixture_filter_by_state_correct, test_fixture_filter_by_state_correct_executed):

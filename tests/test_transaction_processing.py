@@ -1,5 +1,7 @@
-from unittest.mock import patch, mock_open
+from unittest.mock import mock_open, patch
+
 import pandas as pd
+
 from src.transactions_processing import processing_csv, processing_excel
 
 

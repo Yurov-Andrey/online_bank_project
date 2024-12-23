@@ -1,7 +1,7 @@
 import logging
 import os
-from src.settings import REPORTS_PATH
 
+from src.settings import REPORTS_PATH
 
 logger = logging.getLogger(__name__)
 logger.setLevel(logging.INFO)
