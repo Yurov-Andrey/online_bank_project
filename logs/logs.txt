@@ -1,30 +1,15 @@
 my_function_for_test ok 
-Function my_function_for_test started 1733660996.1621742
-Function my_function_for_test started 1733660996.1621752
+Function my_function_for_test started 1734887785.717694
+Function my_function_for_test started 1734887785.7176948
 Time to complete the function: my_function_for_test - 0.0
 my_function_for_test error: can only concatenate str (not "int") to str. Inputs: ('a', 2), {}
 my_function_for_test ok 
-Function my_function_for_test started 1733661088.5431583
-Function my_function_for_test started 1733661088.543159
+Function my_function_for_test started 1734899584.2052848
+Function my_function_for_test started 1734899584.2052855
 Time to complete the function: my_function_for_test - 0.0
 my_function_for_test error: can only concatenate str (not "int") to str. Inputs: ('a', 2), {}
 my_function_for_test ok 
-Function my_function_for_test started 1733661272.0648096
-Function my_function_for_test started 1733661272.0648105
-Time to complete the function: my_function_for_test - 0.0
-my_function_for_test error: can only concatenate str (not "int") to str. Inputs: ('a', 2), {}
-my_function_for_test ok 
-Function my_function_for_test started 1733661349.7769244
-Function my_function_for_test started 1733661349.7769253
-Time to complete the function: my_function_for_test - 0.0
-my_function_for_test error: can only concatenate str (not "int") to str. Inputs: ('a', 2), {}
-my_function_for_test ok 
-Function my_function_for_test started 1733661551.8007908
-Function my_function_for_test started 1733661551.8007917
-Time to complete the function: my_function_for_test - 0.0
-my_function_for_test error: can only concatenate str (not "int") to str. Inputs: ('a', 2), {}
-my_function_for_test ok 
-Function my_function_for_test started 1733661575.2269897
-Function my_function_for_test started 1733661575.2269907
+Function my_function_for_test started 1734900243.555403
+Function my_function_for_test started 1734900243.5554054
 Time to complete the function: my_function_for_test - 0.0
 my_function_for_test error: can only concatenate str (not "int") to str. Inputs: ('a', 2), {}

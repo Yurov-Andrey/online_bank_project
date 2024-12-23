@@ -1,6 +1,6 @@
 import pytest
 
-from src.widget import mask_account_card, get_date
+from src.widget import get_date, mask_account_card
 
 
 @pytest.mark.parametrize("card_number, correct_number", [('Счет 35383033474447895560', 'Счет **95560'),
