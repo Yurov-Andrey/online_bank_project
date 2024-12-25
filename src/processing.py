@@ -41,16 +41,17 @@ def sort_by_search_string(incoming_list: list[dict], search_string: str) -> list
             string = word
             pattern = search_string
             result = re.search(pattern, string, flags=re.IGNORECASE)
-            if result != None:
+            if result is not None:
                 final_list.append(nested_dict)
-
 
     return final_list
 
 
 def sort_by_category(incoming_list: list[dict], category_list: list) -> dict:
     """Функция, которая будет принимать список словарей с данными о банковских операциях и список категорий операций,
-а возвращать словарь, в котором ключи — это названия категорий, а значения — это количество операций в каждой категории."""
+    а возвращать словарь, в котором ключи — это названия категорий,
+    а значения — это количество операций в каждой категории.
+    """
 
     if not isinstance(incoming_list, list) or len(incoming_list) == 0:
         raise ValueError("Не верный тип данных или список транзакций отсутствует")
@@ -67,43 +68,9 @@ def sort_by_category(incoming_list: list[dict], category_list: list) -> dict:
             for category in category_list:
                 pattern = category
                 result = re.search(pattern, string, flags=re.IGNORECASE)
-                if result != None:
+                if result is not None:
                     check_list.append(category)
-
 
     count_dict = dict(Counter(check_list))
 
     return count_dict
-
-
-if __name__ == '__main__':
-    my_list = [
-        {'id': '650703', 'state': 'EXECUTED', 'date': '2023-09-05T11:30:32Z', 'amount': '16210', 'currency_name': 'Sol',
-         'currency_code': 'PEN', 'from': 'Счет 58803664561298323391', 'to': 'Счет 39745660563456619397',
-         'description': 'Перевод организации'},
-        {'id': '3598919', 'state': 'EXECUTED', 'date': '2020-12-06T23:00:58Z',
-         'amount': '29740', 'currency_name': 'Peso', 'currency_code': 'COP',
-         'from': 'Discover 3172601889670065', 'to': 'Discover 0720428384694643',
-         'description': 'Перевод с карты на карту'},
-        {'id': '593027', 'state': 'CANCELED',
-         'date': '2023-07-22T05:02:01Z',
-         'amount': '30368',
-         'currency_name': 'Shilling',
-         'currency_code': 'TZS',
-         'from': 'Visa 1959232722494097',
-         'to': 'Visa 6804119550473710',
-         'description': 'Перевод с карты на карту'},
-        {'id': '5380041',
-         'state': 'CANCELED',
-         'date': '2021-02-01T11:54:58Z',
-         'amount': '23789',
-         'currency_name': 'Peso',
-         'currency_code': 'UYU',
-         'from': '',
-         'to': 'Счет 23294994494356835683',
-         'description': 'Открытие вклада'}
-    ]
-    my_search_string = 'Перевод с карты на карту'
-    my_category_list = ['Открытие вклада', 'Перевод с карты на карту', 'Перевод организации']
-    print(sort_by_category(my_list, my_category_list))
-    print(sort_by_search_string(my_list, my_search_string))
