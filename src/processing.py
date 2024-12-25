@@ -27,6 +27,12 @@ def sort_by_search_string(incoming_list: list[dict], search_string: str) -> list
     """Функция, которая принимает список словарей с данными о банковских операциях и строку поиска,
     а возвращает список словарей, у которых в описании есть данная строка."""
 
+    if not isinstance(incoming_list, list) or len(incoming_list) == 0:
+        raise ValueError("Не верный тип данных или список транзакций отсутствует")
+
+    if not isinstance(search_string, str) or len(search_string) == 0:
+        raise ValueError("Не верный тип данных или строка поиска пуста или отсутствует")
+
     final_list = []
     for nested_dict in incoming_list:
         values_list = nested_dict.values()
@@ -37,8 +43,7 @@ def sort_by_search_string(incoming_list: list[dict], search_string: str) -> list
             result = re.search(pattern, string, flags=re.IGNORECASE)
             if result != None:
                 final_list.append(nested_dict)
-            else:
-                return f'Указанные операциии не найдены'
+
 
     return final_list
 
@@ -46,6 +51,12 @@ def sort_by_search_string(incoming_list: list[dict], search_string: str) -> list
 def sort_by_category(incoming_list: list[dict], category_list: list) -> dict:
     """Функция, которая будет принимать список словарей с данными о банковских операциях и список категорий операций,
 а возвращать словарь, в котором ключи — это названия категорий, а значения — это количество операций в каждой категории."""
+
+    if not isinstance(incoming_list, list) or len(incoming_list) == 0:
+        raise ValueError("Не верный тип данных или список транзакций отсутствует")
+
+    if not isinstance(category_list, list) or len(category_list) == 0:
+        raise ValueError("Не верный тип данных или список категорий отсутствует")
 
     check_list = []
 
@@ -58,6 +69,7 @@ def sort_by_category(incoming_list: list[dict], category_list: list) -> dict:
                 result = re.search(pattern, string, flags=re.IGNORECASE)
                 if result != None:
                     check_list.append(category)
+
 
     count_dict = dict(Counter(check_list))
 
@@ -91,6 +103,7 @@ if __name__ == '__main__':
          'to': 'Счет 23294994494356835683',
          'description': 'Открытие вклада'}
     ]
-
+    my_search_string = 'Перевод с карты на карту'
     my_category_list = ['Открытие вклада', 'Перевод с карты на карту', 'Перевод организации']
     print(sort_by_category(my_list, my_category_list))
+    print(sort_by_search_string(my_list, my_search_string))

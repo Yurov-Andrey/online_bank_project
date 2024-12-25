@@ -1,4 +1,6 @@
-from src.processing import filter_by_state, sort_by_date
+import pytest
+
+from src.processing import filter_by_state, sort_by_date, sort_by_search_string
 from tests.conftest import test_fixture_sort_by_date, test_fixture_sort_by_date_correct
 
 
@@ -14,3 +16,50 @@ def test_filter_by_state_alt(test_fixture_filter_by_state_correct, test_fixture_
 
 def test_sort_by_date(test_fixture_sort_by_date, test_fixture_sort_by_date_correct):
     assert sort_by_date(test_fixture_sort_by_date) == test_fixture_sort_by_date_correct
+
+
+def test_sort_by_search_string_card_to_card(
+        test_fixture_dict_on_list_for_sort_func, test_fixture_dict_on_list_for_sort_func_correct_result_one
+    ):
+    search_string = 'Перевод с карты на карту'
+    assert (sort_by_search_string
+            (test_fixture_dict_on_list_for_sort_func, search_string)
+            ) == test_fixture_dict_on_list_for_sort_func_correct_result_one
+
+def test_sort_by_search_string_money_transfer(
+        test_fixture_dict_on_list_for_sort_func, test_fixture_dict_on_list_for_sort_func_correct_result_money_transfer
+    ):
+    search_string = 'Перевод организации'
+    assert (sort_by_search_string
+            (test_fixture_dict_on_list_for_sort_func, search_string)
+            ) == test_fixture_dict_on_list_for_sort_func_correct_result_money_transfer
+
+def test_sort_by_search_string_deposit(
+        test_fixture_dict_on_list_for_sort_func, test_fixture_dict_on_list_for_sort_func_correct_result_deposit_open
+    ):
+    search_string = 'Открытие вклада'
+    assert (sort_by_search_string
+            (test_fixture_dict_on_list_for_sort_func, search_string)
+            ) == test_fixture_dict_on_list_for_sort_func_correct_result_deposit_open
+
+def test_sort_by_search_string_incoming_type_list():
+    with pytest.raises(ValueError) as exc_info:
+        sort_by_search_string({}, 'Открытие вклада')
+        assert str(exc_info.value) == "Не верный тип данных или список транзакций отсутствует"
+
+
+def test_sort_by_search_string_empty_list():
+    with pytest.raises(ValueError) as exc_info:
+        sort_by_search_string([], 'Открытие вклада')
+        assert str(exc_info.value) == "Не верный тип данных или список транзакций отсутствует"
+
+
+def test_sort_by_search_string_empty_search_string(test_fixture_dict_on_list_for_sort_func):
+    with pytest.raises(ValueError) as exc_info:
+        sort_by_search_string(test_fixture_dict_on_list_for_sort_func, '')
+        assert str(exc_info.value) == "Не верный тип данных или строка поиска пуста или отсутствует"
+
+def test_sort_by_search_string_incoming_type_search_string(test_fixture_dict_on_list_for_sort_func):
+    with pytest.raises(ValueError) as exc_info:
+        sort_by_search_string(test_fixture_dict_on_list_for_sort_func, ['Открытие вклада'])
+        assert str(exc_info.value) == "Не верный тип данных или строка поиска пуста или отсутствует"
