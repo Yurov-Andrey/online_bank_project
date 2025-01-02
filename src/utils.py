@@ -1,12 +1,8 @@
 import json
 import logging
-import os
 from typing import Any
 
 from src.settings import REPORTS_PATH
-
-# log_dir = "logs"
-# os.makedirs(log_dir, exist_ok=True)
 
 logger = logging.getLogger(__name__)
 logger.setLevel(logging.INFO)
