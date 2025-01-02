@@ -3,9 +3,13 @@ from src.masks import get_mask_account, get_mask_card_number
 
 def mask_account_card(incoming_data: str) -> str:
     """Функция принимает номер карты или счета и маскирует его, в зависимости от принятых данных"""
+    if not incoming_data:
+        return ("Отсутствует номер счета или карты")
+
     numbers = ""
     text = ""
     final_masks_number = ""
+
     for symbol in incoming_data:
         if symbol.isdigit():
             numbers += symbol
@@ -14,14 +18,10 @@ def mask_account_card(incoming_data: str) -> str:
 
     if len(numbers) == 16:
         final_masks_number += get_mask_card_number(numbers)
-    elif 0 < len(numbers) != 16 and "счет" not in text.lower():
-        raise ValueError("Не верная длина номера карты")
     elif len(numbers) == 20:
         final_masks_number += get_mask_account(numbers)
-    elif len(numbers) != 20 and "счет" in text.lower():
-        raise ValueError("Не верная длина номера счета")
-    elif len(numbers) == 0:
-        raise ValueError("Отсутствует номер счета или карты")
+    else:
+        return 'Нет данных (счет или карта отсутствуют)'
 
     return f"{text}{final_masks_number}"
 

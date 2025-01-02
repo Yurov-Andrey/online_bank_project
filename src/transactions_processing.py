@@ -28,7 +28,7 @@ def processing_csv(file_path: Any) -> list[dict] | str:
     try:
         with open(file_path, mode="r", encoding="utf-8") as file:
             logger.info(f"Открыт и прочитан файл {file}")
-            reader = csv.DictReader(file, delimiter=",")
+            reader = csv.DictReader(file, delimiter=";")
             result = list(reader)
 
     except FileNotFoundError:

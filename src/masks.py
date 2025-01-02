@@ -1,5 +1,4 @@
 import logging
-import os
 
 from src.settings import REPORTS_PATH
 

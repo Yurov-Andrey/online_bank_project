@@ -1,7 +1,3 @@
-# from typing import Generator, Iterator
-
-
-# def filter_by_currency(incoming_list: list[dict], currency_type: str) -> Iterator[dict]:
 def filter_by_currency(incoming_list: list, currency_type: str):
     """Функция, которая принимает на вход список словарей, представляющих транзакции.
     Функция должна возвращать итератор, который поочередно выдает транзакции,
@@ -22,7 +18,6 @@ def filter_by_currency(incoming_list: list, currency_type: str):
             yield transaction
 
 
-# def transaction_descriptions(incoming_list: list[dict]) -> Generator[dict]:
 def transaction_descriptions(incoming_list: list):
     """Функция принимает список словарей с транзакциями и возвращает описание каждой операции по очереди"""
 
@@ -36,7 +31,6 @@ def transaction_descriptions(incoming_list: list):
         yield transaction["description"]
 
 
-# def card_number_generator(start: int = 1, end: int = 20) -> Generator[str]:
 def card_number_generator(start: int = 1, end: int = 20):
     """Функция генерирует номера карт в заданном диапазоне и выдаёт в корректном формате"""
 
@@ -53,6 +47,6 @@ def card_number_generator(start: int = 1, end: int = 20):
 
     while start <= end:
         formatted_number = f"{start:016}"
-        formatted_number = " ".join([formatted_number[i : i + 4] for i in range(0, len(formatted_number), 4)])
+        formatted_number = " ".join([formatted_number[i:i + 4] for i in range(0, len(formatted_number), 4)])
         yield formatted_number
         start += 1
